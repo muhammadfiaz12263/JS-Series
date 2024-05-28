@@ -1,4 +1,4 @@
-//---4. Sorting Strings by Unicode Values
+//--- Sorting Strings by Unicode Values
 
 function sortStringsByUnicode(arr) {
     return arr.sort((a, b) => {
