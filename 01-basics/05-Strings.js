@@ -136,9 +136,50 @@ function stringToBase64(str) {
     return (result);
 }
 
-console.log(stringToBase64("Hello")); // Outputs: "0100100001100101011011000110110001101111"
+// console.log(stringToBase64("Hello")); // Outputs: "0100100001100101011011000110110001101111"
 
-console.log(btoa(stringToBase64("Hello")));
+// console.log(btoa(stringToBase64("Hello")));
+
+
+
+//---3. Character Frequency Analysis
+//You can analyze the frequency of characters in a text, which is useful in cryptography, linguistics, and text analysis.
+
+
+function charFrequencyAnalysis(text) {
+    let frequency = {};
+    for (let i = 0; i < text.length; i++) {
+        let char = text.charCodeAt(i);
+        if (frequency[char]) {
+            frequency[char]++;
+        } else {
+            frequency[char] = 1;
+        }
+    }
+    return frequency;
+}
+
+//console.log(charFrequencyAnalysis("hello world"));
+// Outputs: { 104: 1, 101: 1, 108: 3, 111: 2, 32: 1, 119: 1, 114: 1, 100: 1 }
+
+//---4. Sorting Strings by Unicode Values
+
+function sortStringsByUnicode(arr) {
+    return arr.sort((a, b) => {
+        for (let i = 0; i < Math.min(a.length, b.length); i++) {
+            let diff = a.charCodeAt(i) - b.charCodeAt(i);
+            if (diff !== 0) {
+                return diff;
+            }
+        }
+        return a.length - b.length;
+    });
+}
+
+let strings = ["banana", "apple", "cherry", "date"];
+console.log(sortStringsByUnicode(strings));
+// Outputs: ["apple", "banana", "cherry", "date"]
+
 
 
 
