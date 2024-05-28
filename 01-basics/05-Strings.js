@@ -177,8 +177,67 @@ function sortStringsByUnicode(arr) {
 }
 
 let strings = ["banana", "apple", "cherry", "date"];
-console.log(sortStringsByUnicode(strings));
+// console.log(sortStringsByUnicode(strings));
 // Outputs: ["apple", "banana", "cherry", "date"]
+
+
+// 5. Custom Text Transformation
+// You can create custom text transformations, such as ROT13 encryption, which shifts each character by 13 places in the alphabet.
+
+
+function rot13(str) {
+    return str.split('').map(char => {
+        let code = char.charCodeAt(0);
+        if (code >= 65 && code <= 90) {
+            // Uppercase letters
+            return String.fromCharCode(((code - 65 + 13) % 26) + 65);
+        } else if (code >= 97 && code <= 122) {
+            // Lowercase letters
+            return String.fromCharCode(((code - 97 + 13) % 26) + 97);
+        } else {
+            // Non-alphabetic characters
+            return char;
+        }
+    }).join('');
+}
+
+console.log(rot13("Hello, World!")); // Outputs: "Uryyb, Jbeyq!"
+
+
+//Common Use Cases
+//Decoding Unicode Values: When you have a list of Unicode values and need to convert them back into a readable string.
+
+
+let unicodeValues = [72, 101, 108, 108, 111];
+let decodedString = String.fromCharCode(...unicodeValues);
+console.log(decodedString); // Outputs: "Hello"
+
+
+//Creating Characters Programmatically: You can generate strings from specific Unicode values, 
+//which can be useful for various text manipulation tasks.
+
+let charA = String.fromCharCode(65); // 'A'
+let charB = String.fromCharCode(66); // 'B'
+console.log(charA, charB); // Outputs: "A B"
+
+
+//Generating a Sequence of Characters: You can create a range of characters, such as the alphabet.
+
+
+let alphabet = '';
+for (let i = 65; i <= 90; i++) {
+    alphabet += String.fromCharCode(i);
+}
+console.log(alphabet); // Outputs: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+
+//Converting Encoded Data: If you have data encoded as Unicode values, 
+//you can convert it back to a string for display or further processing.
+
+
+let encodedData = [72, 101, 108, 108, 111, 44, 32, 87, 111, 114, 108, 100, 33];
+let message = String.fromCharCode(...encodedData);
+console.log(message); // Outputs: "Hello, World!"
 
 
 
